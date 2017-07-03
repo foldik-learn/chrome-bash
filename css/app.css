@@ -25,6 +25,7 @@ body {
 */
 
 .input-line-container {
+    margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
     font-size: 2rem;
@@ -45,4 +46,19 @@ body {
     outline: none;
 }
 
+.result-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: green;
+    background-color: rgba(240, 240, 240, 0.9);
+    border-width:  0px 2px 0px 2px; 
+    border-style: dashed;
+    border-color: black;
+    word-break: break-all;
+}
 
+.result-container:hover {
+    background-color: rgba(240, 240, 230, 0.5);
+}

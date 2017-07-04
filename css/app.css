@@ -35,6 +35,8 @@ body {
 }
 
 .input-line-marker {
+    margin-left: 1.5rem;
+    color: rgb(80, 80, 80);
     margin-right: 1rem;
 }
 

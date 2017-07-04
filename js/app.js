@@ -47,7 +47,7 @@ app.commandHandler = (function($document) {
     function appendNextInputLine() {
         $actualInputLine.attr('contentEditable', 'false');
         inputLineCount = inputLineCount + 1;
-        $('#container').append('<div class="input-line-container"><span class="input-line-marker">&gt;</span><div id="line-' + inputLineCount + '" class="input-line" contentEditable="true"></div></div>');
+        $('#container').append('<div class="input-line-container"><span class="input-line-marker">[' + inputLineCount + '] &gt;</span><div id="line-' + inputLineCount + '" class="input-line" contentEditable="true"></div></div>');
         $actualInputLine = $('#line-' + inputLineCount);
         setUpCommandLine();
     }

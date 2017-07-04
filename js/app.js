@@ -16,15 +16,26 @@ app.collatz = function() {
 
 app.commandHandler = (function($document) {
 
+    var commandIndex = -1;
     var inputLineCount = 1;
     var $actualInputLine;
 
+    var previousCommands = [];
+
     function setUpCommandLine() {
         $actualInputLine.focus();
-        $actualInputLine.keypress(function(event) {
-            if (event.which == 13) {
+        $actualInputLine.keydown(function(event) {
+            if (event.which === 13) {
                 event.preventDefault();
                 evaluateCommand();
+            } else if (event.which === 38 && commandIndex > -1) { /*Up*/
+                event.preventDefault();
+                $actualInputLine.text(previousCommands[commandIndex]);
+                commandIndex = commandIndex - 1;
+            } else if (event.which === 40 && commandIndex < previousCommands.length - 1) { /*Down*/
+                event.preventDefault();
+                $actualInputLine.text(previousCommands[commandIndex]);
+                commandIndex = commandIndex + 1;
             }
         })
         $actualInputLine.parent()
@@ -42,6 +53,8 @@ app.commandHandler = (function($document) {
     }
 
     function evaluateCommand() {
+        previousCommands.push($actualInputLine.text());
+        commandIndex = previousCommands.length - 1;
         if ($actualInputLine.text() === 'collatz') {
             $('#container').append('<div class="result-container">[' + app.collatz().join(' | ') + ']</div>')
         } else {
